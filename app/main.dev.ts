@@ -76,6 +76,15 @@ const createWindow = async () => {
       mainWindow.show();
       mainWindow.focus();
     }
+
+    const pathFile = app.commandLine.getSwitchValue('path');
+    console.log('switch', pathFile);
+    if (pathFile) {
+      mainWindow.webContents.send('path', { pathFile });
+    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    global.sharedObject = { prop1: process.argv };
   });
 
   mainWindow.on('closed', () => {

@@ -17,3 +17,15 @@ document.addEventListener('DOMContentLoaded', () =>
     document.getElementById('root')
   )
 );
+
+// const { ipcRenderer } = require('electron');
+//
+// ipcRenderer.on('path', function(event, store) {
+//   console.log('store', event, store);
+// });
+
+const { remote } = require('electron');
+
+const argument = remote.getGlobal('sharedObject');
+
+console.log('aaaaaaa', argument);
